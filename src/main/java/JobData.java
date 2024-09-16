@@ -69,13 +69,15 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
+        String lowerCase = value.toLowerCase();
+
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.toLowerCase().contains(lowerCase)) {
                 jobs.add(row);
             }
         }
@@ -96,12 +98,14 @@ public class JobData {
 
         // TODO - implement this method
         String lowerCase = value.toLowerCase();
-
+        // debugging
+        //System.out.println("Searching: '" + value + "'");
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
         for (HashMap<String, String> job : allJobs) {
             for (String key : job.keySet()) {
                 String aValue = job.get(key);
-                if (aValue != null && aValue.toLowerCase().contains(lowerCase)) {
+                //System.out.println("Field: " + key + " Value: " + aValue);
+                if (aValue.toLowerCase().contains(lowerCase)) {
                     jobs.add(job);
                     break;
                 }
